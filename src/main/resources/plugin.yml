@@ -5,3 +5,5 @@ main: de.sabberkopp.Main
 commands:
     fclaim:
       description: claim land
+    fcreate:
+      description: create faction

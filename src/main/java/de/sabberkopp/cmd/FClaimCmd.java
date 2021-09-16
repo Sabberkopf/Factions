@@ -4,6 +4,7 @@ import de.sabberkopp.TempDB;
 import de.sabberkopp.classe.Chunk;
 
 import de.sabberkopp.helper.ChunkHelper;
+import de.sabberkopp.sql.SqlHelper;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,9 +17,9 @@ public class FClaimCmd implements CommandExecutor {
         if(sender instanceof Player){
             Player p = (Player) sender;
             Chunk chunk = ChunkHelper.getChunk(p.getLocation());
-            chunk.setOwedby(sender.getName());
-            System.out.println(chunk.id+":"+chunk);
-            TempDB.addChunk(chunk.id,chunk);
+            SqlHelper.addChunk(args[0],chunk.id);
+
+            p.sendMessage("Chunk claimed");
 
         }
 

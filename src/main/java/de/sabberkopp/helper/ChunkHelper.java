@@ -7,7 +7,6 @@ import de.sabberkopp.classe.Chunk;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
 import java.util.HashMap;
@@ -22,19 +21,19 @@ public class ChunkHelper implements Listener {
                   String chunkId = getChunkId(p.getLocation());
                     System.out.println(chunkId);
                   if(TempDB.claimedchunks.containsKey(chunkId)) {
-                      List<Chunk> c = TempDB.claimedchunks.get(chunkId);
+                      List<String> c = TempDB.claimedchunks.get(chunkId);
                       for (int i = 0; i < c.size(); i++) {
                           if (oldmessage.containsKey(p.getName())) {
-                              if (c.get(i).owedby == oldmessage.get(p.getName())) {
+                              if (c.get(i) == oldmessage.get(p.getName())) {
                                   continue;
                               } else {
-                                  oldmessage.put(p.getName(), c.get(i).owedby);
-                                  MessageHelper.setTitle(p, c.get(i).getOwedby(), null);
+                                  oldmessage.put(p.getName(), c.get(i));
+                                  MessageHelper.setTitle(p, c.get(i), null);
                               }
 
                           } else {
-                              oldmessage.put(p.getName(), c.get(i).owedby);
-                              MessageHelper.setTitle(p, c.get(i).getOwedby(), null);
+                              oldmessage.put(p.getName(), c.get(i));
+                              MessageHelper.setTitle(p, c.get(i), null);
                           }
                       }
                   }else if (oldmessage.containsKey(p.getName())){

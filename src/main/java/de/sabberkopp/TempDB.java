@@ -8,18 +8,20 @@ import java.util.HashMap;
 import java.util.List;
 
 public class TempDB {
-    public static HashMap<String, List<Chunk>> claimedchunks = new HashMap<>();
+    public static HashMap<String, List<String>> claimedchunks = new HashMap<>();
     public static HashMap<String, Player> allplayers = new HashMap<>();
 
-    public static void addChunk(String key,Chunk c){
-        System.out.println(key+"/"+c.owedby);
+
+
+    public static void addChunk(String key,String ownedby){
+        System.out.println(key+"/"+ownedby);
         if(claimedchunks.containsKey(key)){
-           List<Chunk> chunks = claimedchunks.get(key);
-           chunks.add(c);
+           List<String> chunks = claimedchunks.get(key);
+           chunks.add(ownedby);
            claimedchunks.put(key,chunks);
         }else {
-            List<Chunk> chunks = new ArrayList<>();
-            chunks.add(c);
+            List<String> chunks = new ArrayList<>();
+            chunks.add(ownedby);
             claimedchunks.put(key,chunks);
         }
 
