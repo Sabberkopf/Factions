@@ -1,0 +1,7 @@
+name: Factions
+version: '${project.version}'
+main: de.sabberkopp.Main
+
+commands:
+    fclaim:
+      description: claim land
